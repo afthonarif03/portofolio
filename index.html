@@ -940,6 +940,98 @@
                 height: 40px;
             }
         }
+        
+        .description {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .click-hint {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 0.8rem;
+            color: #6c757d;
+            font-weight: normal;
+        }
+        .contact-item:hover {
+            background-color: #e9ecef;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #2575fc;
+        }
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 18px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .contact-item span {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        /* Warna ikon */
+        .fa-envelope {
+            color: #EA4335;
+        }
+        
+        .fa-phone {
+            color: #25D366;
+        }
+        
+        .fa-map-marker-alt {
+            color: #4285F4;
+        }
+        
+        .note {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #777;
+            line-height: 1.5;
+            text-align: center;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-item {
+                padding: 12px 15px;
+            }
+            
+            .contact-item span {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -957,8 +1049,8 @@
             <nav>
                 <a href="#" class="logo">AFTHON ARIF</a>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#portfolio">Portofolio</a></li>
                     <li><a href="#about">Tentang</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
@@ -1151,43 +1243,31 @@
                     <p>Siap untuk mengubah ide Anda menjadi desain yang menakjubkan? Mari berdiskusi tentang proyek Anda!</p>
                     
                     <div class="contact-details">
-                        <div class="contact-item">
+                        <div class="contact-item" onclick="sendEmail()">
                             <i class="fas fa-envelope"></i>
-                            <span>afthon@example.com</span>
+                            <span>afthonarif@gmail.com <span class="click-hint">(Klik untuk mengirim email)</span></span>
                         </div>
-                        <div class="contact-item">
+                        <div class="contact-item" onclick="callPhone()">
                             <i class="fas fa-phone"></i>
-                            <span>+62 812 3456 7890</span>
+                            <span>+62 823 24955704 <span class="click-hint">(Klik untuk menghubungi)</span></span>
                         </div>
-                        <div class="contact-item">
+                        <div class="contact-item" onclick="openMaps()">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Jakarta, Indonesia</span>
-                        </div>
+                            <span>Batang, Jawa Tengah, Indonesia <span class="click-hint">(Klik untuk melihat peta)</span></span>
                     </div>
                     
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-behance"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://t.me/afthonarif" target="_blank" class="telegram" data-tooltip="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://www.instagram.com/afthooon__" target="_blank" class="instagram" data-tooltip="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/afthon-afthon-arif-469b29381?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin" data-tooltip="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
                     </div>
                 </div>
-                
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Nama Lengkap" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Alamat Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subjek" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Pesan Anda" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Kirim Pesan</button>
-                </form>
             </div>
         </div>
     </section>
@@ -1200,14 +1280,13 @@
                 <p>Menciptakan desain yang berbicara lebih dari sekadar kata-kata</p>
             </div>
             <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#portfolio">Portfolio</a>
+                <a href="#home">Beranda</a>
+                <a href="#portfolio">Portofolio</a>
                 <a href="#about">Tentang</a>
-                <a href="#services">Layanan</a>
                 <a href="#contact">Kontak</a>
             </div>
             <div class="copyright">
-                &copy; 2023 AFTHON ARIF. All Rights Reserved.
+                &copy; 2025 Portofolio - AFTHON ARIF
             </div>
         </div>
     </footer>
@@ -1305,6 +1384,32 @@
         
         observer.observe(aboutSection);
     </script>
+    <script>
+        // Fungsi untuk mengirim email
+        function sendEmail() {
+            const email = 'afthonarif@gmail.com';
+            const subject = 'Hubungi Kami';
+            const body = 'Halo, saya ingin mengetahui lebih lanjut tentang...';
+            
+            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+        
+        // Fungsi untuk menghubungi nomor telepon
+        function callPhone() {
+            const phoneNumber = '+6282324955704';
+            
+            // Untuk perangkat mobile akan membuka aplikasi telepon
+            // Untuk desktop akan memberikan opsi untuk menggunakan aplikasi telepon
+            window.location.href = `tel:${phoneNumber}`;
+        }
+        
+        // Fungsi untuk membuka peta lokasi
+        function openMaps() {
+            const address = 'Batang, Jawa Tengah, Indonesia';
+            
+            // Membuka Google Maps dengan lokasi yang ditentukan
+            window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
+        }
+    </script>
 </body>
-
 </html>
