@@ -204,6 +204,46 @@
         
         /* Hero Section */
         .hero {
+    padding: 100px 0;
+}
+
+.hero-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: right;
+}
+
+.hero-image img {
+    width: 90%;
+    max-width: 450px;
+    border-radius: 15px;
+}
+@media (max-width: 768px) {
+    .hero-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image {
+        text-align: center;
+    }
+
+    .hero-image img {
+        width: 70%;
+    }
+}
+
+        .hero {
             background: linear-gradient(135deg, rgba(10, 10, 20, 0.9) 0%, rgba(26, 26, 46, 0.9) 100%);
             color: var(--white);
             padding: 150px 0 100px;
@@ -450,6 +490,27 @@
         .portfolio-item:hover .portfolio-overlay {
             opacity: 1;
         }
+        .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
+    width: 350px;          /* ukuran avatar */
+    height: 350px;
+    border-radius: 50%;    /* membuat lingkaran */
+    overflow: hidden;      /* agar foto mengikuti bentuk lingkaran */
+    border: 4px solid #00eaff; /* warna border neon (opsional) */
+    box-shadow: 0 0 20px #00eaff; /* efek neon glow */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* menjaga proporsi */
+}
+
         
         .portfolio-overlay a {
             color: var(--white);
@@ -1179,6 +1240,122 @@
                 text-align: center;
             }
         }
+        /* Overlay gelap */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 20, 0.85); /* biru gelap */
+    backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Kontainer popup */
+.modal-content {
+    background: #0d0d1a; /* gelap elegan */
+    padding: 25px;
+    width: 90%;
+    max-width: 750px;
+    border-radius: 15px;
+
+    /* NEON BORDER */
+    border: 2px solid #00eaff;
+    box-shadow: 
+        0 0 25px #00eaff,
+        0 0 50px #007a99 inset;
+
+    color: #00eaff;
+
+    animation: neonPop 0.35s ease-out;
+}
+
+/* Animasi pop futuristik */
+@keyframes neonPop {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Tombol close */
+.close {
+    float: right;
+    font-size: 32px;
+    cursor: pointer;
+    color: #00eaff;
+    text-shadow: 0 0 10px #00eaff;
+    transition: 0.2s;
+}
+.close:hover {
+    color: white;
+    text-shadow: 0 0 18px #00eaff;
+}
+
+/* Slider container */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 2px solid #00eaff;
+    box-shadow: 0 0 20px #00eaff;
+}
+
+/* Gambar */
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Tombol navigasi NEXT & PREV */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    border: none;
+    padding: 12px 16px;
+
+    background: rgba(0, 200, 255, 0.18);
+    color: #00eaff;
+
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #00eaff;
+
+    transition: 0.25s;
+}
+
+/* Arah */
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.prev:hover, .next:hover {
+    background: #00eaff;
+    color: #000d14;
+    box-shadow: 0 0 25px #00eaff;
+}
+
+/* Judul */
+#modalTitle {
+    font-size: 24px;
+    margin-top: 18px;
+    text-shadow: 0 0 10px #00eaff;
+}
+
+/* Deskripsi */
+#modalDesc {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #c8f7ff;
+    line-height: 1.6;
+}
+.portfolio-filter {
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -1210,21 +1387,33 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Desain Grafis yang Membuat Brand Anda Berbicara</h1>
-                <p>Desainer grafis profesional dengan pengalaman 5+ tahun menciptakan solusi visual yang impactful untuk berbagai industri</p>
-                <a href="#portfolio" class="btn">Lihat Portfolio</a>
-            </div>
+    <div class="container hero-grid">
+        
+        <!-- Bagian Teks -->
+        <div class="hero-content">
+            <h1>AFTHON ARIF</h1>
+            <p>Desainer grafis dan Web Developer</p>
+            <a href="#portfolio" class="btn">Lihat Portfolio</a>
         </div>
-    </section>
+
+        <!-- Bagian Foto -->
+        <!-- Bagian Foto -->
+<div class="hero-image">
+    <div class="avatar">
+        <img src="images/profile.jpeg" alt="Foto Desain Grafis">
+    </div>
+</div>
+
+
+    </div>
+</section>
+
 
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-title">
-                <h2>Portfolio Terbaru</h2>
-                <p>Koleksi karya terbaik yang telah saya buat untuk berbagai klien</p>
+                <h2>Portofolio</h2>
             </div>
             
             <div class="portfolio-filter">
@@ -1236,87 +1425,56 @@
             </div>
             
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="logo">
-                    <div class="portfolio-img">
-                        <div style="background:linear-gradient(135deg, #1a1a2e, #16213e); color:var(--neon-blue); display:flex; align-items:center; justify-content:center; width:100%; height:100%; font-weight:bold; text-shadow:0 0 10px var(--neon-blue);">LOGO DESIGN</div>
-                        <div class="portfolio-overlay">
-                            <a href="#"><i class="fas fa-search"></i></a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                <div class="portfolio-item" data-category="logo"
+                    onclick="openModal(
+                        ['images/projectskripsi/judul.jpeg','images/projectskripsi/mulai.jpeg','images/projectskripsi/materi.jpeg',
+                        'images/projectskripsi/kuis.jpeg','images/projectskripsi/hasil.jpeg','images/projectskripsi/ar.jpeg',], 
+                        'Game Edukasi Berbasis AR',
+                        'Project ini merupakan tugas akhirProject skripsi ini mengembangkan sebuah game edukasi berbasis Augmented Reality (AR) yang dirancang untuk meningkatkan minat belajar dan pemahaman siswa melalui interaksi visual yang lebih menarik. Game ini memanfaatkan teknologi AR untuk menampilkan objek 3D dan materi pembelajaran secara real-time, sehingga proses belajar menjadi lebih interaktif, intuitif, dan menyenangkan.'
+                    )">
+
+                    <div class="portfolio-img" style="width:100%; height:250px; overflow:hidden;">
+                        <img src="images/projectskripsi/judul.jpeg" style="width:100%; height:100%; object-fit:cover;">
                     </div>
+
                     <div class="portfolio-info">
-                        <h3>Redesign Logo Perusahaan XYZ</h3>
-                        <p>Logo Design</p>
+                        <h3>Game Edukasi Berbasis AR</h3>
+                        <p>Project Skripsi</p>
                     </div>
                 </div>
-                
-                <div class="portfolio-item" data-category="branding">
-                    <div class="portfolio-img">
-                        <div style="background:linear-gradient(135deg, #2d1b4e, #4a1c6b); color:var(--neon-purple); display:flex; align-items:center; justify-content:center; width:100%; height:100%; font-weight:bold; text-shadow:0 0 10px var(--neon-purple);">BRANDING PACKAGE</div>
-                        <div class="portfolio-overlay">
-                            <a href="#"><i class="fas fa-search"></i></a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
+
+                <div class="portfolio-item" data-category="logo"
+                    onclick="openModal(
+                        ['images/magang/tampilan register.jpg','images/magang/tampilan login.jpg','images/magang/tampilan menu.jpg',
+                        'images/magang/tampilan isi data.jpg','images/magang/tampilan data izin.jpg','images/magang/tampilan tentang.jpg',], 
+                        'Game Edukasi Berbasis AR',
+                        'Project magang ini berfokus pada pengembangan Sistem Perizinan Karyawan di BPS yang bertujuan untuk mempermudah proses pengajuan izin, persetujuan atasan, serta pencatatan data izin secara digital. Sistem ini dirancang agar lebih efisien, transparan, dan terintegrasi sehingga dapat mendukung kelancaran administrasi kepegawaian.'
+                    )">
+
+                    <div class="portfolio-img" style="width:100%; height:250px; overflow:hidden;">
+                        <img src="images/magang/tampilan register.jpg" style="width:100%; height:100%; object-fit:cover;">
                     </div>
+
                     <div class="portfolio-info">
-                        <h3>Brand Identity Startup Tech</h3>
-                        <p>Branding</p>
+                        <h3>Sistem Perizinan Karyawan BPS</h3>
+                        <p>Project Magang</p>
                     </div>
                 </div>
-                
-                <div class="portfolio-item" data-category="uiux">
-                    <div class="portfolio-img">
-                        <div style="background:linear-gradient(135deg, #1a2e3d, #1e3d59); color:var(--neon-blue); display:flex; align-items:center; justify-content:center; width:100%; height:100%; font-weight:bold; text-shadow:0 0 10px var(--neon-blue);">UI/UX DESIGN</div>
-                        <div class="portfolio-overlay">
-                            <a href="#"><i class="fas fa-search"></i></a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
+
+                <div class="portfolio-item" data-category="logo"
+                    onclick="openModal(
+                        ['images/wordpress/1.png','images/wordpress/2.png'], 
+                        'Game Edukasi Berbasis AR',
+                        'Project ini berupa pengembangan website e-commerce berbasis WordPress yang dirancang untuk memudahkan proses penjualan produk secara online. Website dilengkapi dengan fitur katalog produk, keranjang belanja, sistem pembayaran, manajemen pesanan, serta dashboard admin untuk pengelolaan toko.'
+                    )">
+
+                    <div class="portfolio-img" style="width:100%; height:250px; overflow:hidden;">
+                        <img src="images/wordpress/1.png" style="width:100%; height:100%; object-fit:cover;">
                     </div>
+
                     <div class="portfolio-info">
-                        <h3>Mobile App Design</h3>
-                        <p>UI/UX Design</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="illustration">
-                    <div class="portfolio-img">
-                        <div style="background:linear-gradient(135deg, #4a1c2e, #6d2c41); color:var(--neon-pink); display:flex; align-items:center; justify-content:center; width:100%; height:100%; font-weight:bold; text-shadow:0 0 10px var(--neon-pink);">ILLUSTRATION</div>
-                        <div class="portfolio-overlay">
-                            <a href="#"><i class="fas fa-search"></i></a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Character Illustration Series</h3>
-                        <p>Ilustrasi</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="logo">
-                    <div class="portfolio-img">
-                        <div style="background:linear-gradient(135deg, #2d1b4e, #4a1c6b); color:var(--neon-purple); display:flex; align-items:center; justify-content:center; width:100%; height:100%; font-weight:bold; text-shadow:0 0 10px var(--neon-purple);">LOGO DESIGN</div>
-                        <div class="portfolio-overlay">
-                            <a href="#"><i class="fas fa-search"></i></a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Logo untuk Kafe Minimalis</h3>
-                        <p>Logo Design</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="branding">
-                    <div class="portfolio-img">
-                        <div style="background:linear-gradient(135deg, #1a3d2e, #1e593d); color:var(--neon-green); display:flex; align-items:center; justify-content:center; width:100%; height:100%; font-weight:bold; text-shadow:0 0 10px var(--neon-green);">BRANDING PACKAGE</div>
-                        <div class="portfolio-overlay">
-                            <a href="#"><i class="fas fa-search"></i></a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Corporate Branding</h3>
-                        <p>Branding</p>
+                        <h3>Website E Commerce</h3>
+                        <p>Project WordPress</p>
                     </div>
                 </div>
             </div>
@@ -1328,37 +1486,24 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-img">
-                    <div style="background:linear-gradient(135deg, #1a1a2e, #16213e); height:400px; display:flex; align-items:center; justify-content:center; color:var(--neon-blue); font-weight:bold; text-shadow:0 0 10px var(--neon-blue);">Foto Profil</div>
+                    <div class="about-img-wrapper">
+                        <img src="images/profile.jpeg" alt="Foto Profil">
+                    </div>
                 </div>
+
                 <div class="about-text">
                     <h2>Tentang Saya</h2>
-                    <p>Saya adalah desainer grafis dengan passion menciptakan visual yang tidak hanya menarik secara estetika tetapi juga efektif dalam menyampaikan pesan brand. Dengan latar belakang 5+ tahun di industri desain, saya telah membantu berbagai bisnis dari startup hingga perusahaan besar meningkatkan identitas visual mereka.</p>
-                    <p>Saya percaya bahwa desain yang baik adalah kombinasi antara kreativitas, strategi, dan pemahaman mendalam tentang kebutuhan klien.</p>
+                    <p style="text-align: justify;">Lulusan S1 Informatika Universitas PGRI Semarang dengan IPK 3,82 (Cumlaude) dan masa studi 4 tahun.
+Memiliki minat dan keahlian di bidang desain grafis serta pengembangan sistem, pengelolaan data, dan
+teknologi informasi melalui pengalaman magang di BPS Kota Semarang sebagai staf IPDS (Integrasi
+Pengolahan dan Diseminasi Statistik) selama 3 bulan. Memiliki kemampuan menggunakan VS Code,
+CodeIgniter (basic), WordPress (basic), Unity, dan terampil dalam desain grafis. Siap berkontribusi dalam
+lingkungan kerja yang dinamis dengan semangat belajar tinggi dan perhatian terhadap detail.</p>
                     
                     <div class="skills">
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>Adobe Illustrator</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Adobe Photoshop</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Figma</span>
+                                <span>CorelDraw</span>
                                 <span>85%</span>
                             </div>
                             <div class="skill-bar">
@@ -1368,11 +1513,31 @@
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>Adobe InDesign</span>
+                                <span>Web Developer</span>
                                 <span>80%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Figma</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Adobe Illustrator</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
                             </div>
                         </div>
                     </div>
@@ -1425,7 +1590,6 @@
         <div class="container">
             <div class="footer-content">
                 <a href="#" class="logo" style="color:white; margin-bottom:1rem; display:inline-block;">AFTHON ARIF</a>
-                <p>Menciptakan desain yang berbicara lebih dari sekadar kata-kata</p>
             </div>
             <div class="footer-links">
                 <a href="#home">Beranda</a>
@@ -1559,5 +1723,61 @@
             window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
         }
     </script>
+   <script>
+let currentIndex = 0;
+let images = [];
+
+function openModal(imgArray, title, desc) {
+    images = imgArray;
+    currentIndex = 0;
+
+    document.getElementById('modalImage').src = images[currentIndex];
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalDesc').innerText = desc;
+
+    document.getElementById('portfolioModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('portfolioModal').style.display = 'none';
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById('modalImage').src = images[currentIndex];
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById('modalImage').src = images[currentIndex];
+}
+
+window.onclick = function(e) {
+    let modal = document.getElementById('portfolioModal');
+    if (e.target == modal) closeModal();
+}
+</script>
+
+<div id="portfolioModal" class="modal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <!-- Slider -->
+        <div class="slider">
+            <button class="prev" onclick="prevImage()">&#10094;</button>
+            <img id="modalImage" src="">
+            <button class="next" onclick="nextImage()">&#10095;</button>
+        </div>
+
+        <!-- Judul -->
+        <h2 id="modalTitle"></h2>
+
+        <!-- Deskripsi lengkap -->
+        <p id="modalDesc"></p>
+
+    </div>
+</div>
+
 </body>
 </html>
