@@ -1356,6 +1356,53 @@
 .portfolio-filter {
     display: none;
 }
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: zoom-out;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+.portfolio-img img {
+    cursor: pointer;
+    pointer-events: auto;
+}
+.portfolio-img {
+    width: 100%;
+    height: 250px;          /* tinggi seragam */
+    background: #f4f4f4;    /* biar tidak kosong */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.portfolio-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;   /* ⬅️ gambar TIDAK terpotong */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-img img:hover {
+    transform: scale(1.05);
+}
+
     </style>
 </head>
 <body>
@@ -1410,76 +1457,146 @@
 
 
     <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Portofolio</h2>
-            </div>
-            
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">Semua</button>
-                <button class="filter-btn" data-filter="logo">Logo</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
-                <button class="filter-btn" data-filter="uiux">UI/UX</button>
-                <button class="filter-btn" data-filter="illustration">Ilustrasi</button>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="logo"
-                    onclick="openModal(
-                        ['images/projectskripsi/judul.jpeg','images/projectskripsi/mulai.jpeg','images/projectskripsi/materi.jpeg',
-                        'images/projectskripsi/kuis.jpeg','images/projectskripsi/hasil.jpeg','images/projectskripsi/ar.jpeg',], 
-                        'Game Edukasi Berbasis AR',
-                        'Project ini merupakan tugas akhirProject skripsi ini mengembangkan sebuah game edukasi berbasis Augmented Reality (AR) yang dirancang untuk meningkatkan minat belajar dan pemahaman siswa melalui interaksi visual yang lebih menarik. Game ini memanfaatkan teknologi AR untuk menampilkan objek 3D dan materi pembelajaran secara real-time, sehingga proses belajar menjadi lebih interaktif, intuitif, dan menyenangkan.'
-                    )">
+<section class="portfolio" id="portfolio">
+    <div class="container">
+        <div class="section-title">
+            <h2>Portofolio</h2>
+        </div>
 
-                    <div class="portfolio-img" style="width:100%; height:250px; overflow:hidden;">
-                        <img src="images/projectskripsi/judul.jpeg" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
+        <!-- Optional Filter -->
+        <div class="portfolio-filter">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="logo">Logo</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+            <button class="filter-btn" data-filter="uiux">UI/UX</button>
+            <button class="filter-btn" data-filter="illustration">Ilustrasi</button>
+        </div>
 
-                    <div class="portfolio-info">
-                        <h3>Game Edukasi Berbasis AR</h3>
-                        <p>Project Skripsi</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="logo"
-                    onclick="openModal(
-                        ['images/magang/tampilan register.jpg','images/magang/tampilan login.jpg','images/magang/tampilan menu.jpg',
-                        'images/magang/tampilan isi data.jpg','images/magang/tampilan data izin.jpg','images/magang/tampilan tentang.jpg',], 
-                        'Game Edukasi Berbasis AR',
-                        'Project magang ini berfokus pada pengembangan Sistem Perizinan Karyawan di BPS yang bertujuan untuk mempermudah proses pengajuan izin, persetujuan atasan, serta pencatatan data izin secara digital. Sistem ini dirancang agar lebih efisien, transparan, dan terintegrasi sehingga dapat mendukung kelancaran administrasi kepegawaian.'
-                    )">
-
-                    <div class="portfolio-img" style="width:100%; height:250px; overflow:hidden;">
-                        <img src="images/magang/tampilan register.jpg" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-
-                    <div class="portfolio-info">
-                        <h3>Sistem Perizinan Karyawan BPS</h3>
-                        <p>Project Magang</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="logo"
-                    onclick="openModal(
-                        ['images/wordpress/1.png','images/wordpress/2.png'], 
-                        'Game Edukasi Berbasis AR',
-                        'Project ini berupa pengembangan website e-commerce berbasis WordPress yang dirancang untuk memudahkan proses penjualan produk secara online. Website dilengkapi dengan fitur katalog produk, keranjang belanja, sistem pembayaran, manajemen pesanan, serta dashboard admin untuk pengelolaan toko.'
-                    )">
-
-                    <div class="portfolio-img" style="width:100%; height:250px; overflow:hidden;">
-                        <img src="images/wordpress/1.png" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-
-                    <div class="portfolio-info">
-                        <h3>Website E Commerce</h3>
-                        <p>Project WordPress</p>
-                    </div>
-                </div>
+        <div class="portfolio-grid">
+        <div class="portfolio-item" data-category="logo">
+            <div class="portfolio-img">
+                <img src="images/Afthon Arif_21670038_Poster.png" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
             </div>
         </div>
-    </section>
+
+        <div class="portfolio-item" data-category="logo">
+            <div class="portfolio-img">
+                <img src="images/Poster Utami.jpg" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/Poster febri.jpg" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/Poster Greget FIX.jpg" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/Pamflet kwu.jpg" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/Backdrop Foto FTI.jpg" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/Backdrop Wisuda FTI.jpg" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/Banner proker pendidikan 1.jpg" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/Biru Dan Hijau Ilustrasi Spanduk Informasi Pendaftaran Sekolah.png" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/KAMPANYE PERILAKU HIDUP BERSIH DAN SEHAT.png" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/Jersey futsal hijau putih.jpg" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/logo_futsal_banteng.png" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/logo 421 esport.png" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/Stiker Kumbang2.png" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-category="uiux">
+            <div class="portfolio-img">
+                <img src="images/Stiker Kumbang1.png" 
+                    onclick="openLightbox(this.src)" 
+                    alt="Design">
+            </div>
+        </div>
+</div>
+
+    </div>
+</section>
+
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -1513,7 +1630,7 @@ lingkungan kerja yang dinamis dengan semangat belajar tinggi dan perhatian terha
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>Web Developer</span>
+                                <span>Canva</span>
                                 <span>80%</span>
                             </div>
                             <div class="skill-bar">
@@ -1523,7 +1640,7 @@ lingkungan kerja yang dinamis dengan semangat belajar tinggi dan perhatian terha
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>Figma</span>
+                                <span>Web Developer</span>
                                 <span>75%</span>
                             </div>
                             <div class="skill-bar">
@@ -1533,11 +1650,11 @@ lingkungan kerja yang dinamis dengan semangat belajar tinggi dan perhatian terha
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>Adobe Illustrator</span>
-                                <span>70%</span>
+                                <span>Affinity by Canva</span>
+                                <span>60%</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 70%"></div>
+                                <div class="skill-progress" style="width: 60%"></div>
                             </div>
                         </div>
                     </div>
@@ -1777,7 +1894,24 @@ window.onclick = function(e) {
         <p id="modalDesc"></p>
 
     </div>
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="">
 </div>
+
+<script>
+function openLightbox(src) {
+    const lightbox = document.getElementById("lightbox");
+    const img = document.getElementById("lightbox-img");
+
+    img.src = src;
+    lightbox.style.display = "flex";
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+</script>
 
 </body>
 </html>
